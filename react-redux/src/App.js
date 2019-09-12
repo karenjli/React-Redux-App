@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { getAge } from "./actions";
 
 import "./App.css";
 import { connect } from "react-redux";
 
-function App({ name, isFetching, error, age }) {
+function App(props) {
+  const [name, setName] = useState();
   const onChange = e => {
-    name = e.target.value;
+    setName(e.target.value);
+    console.log(name);
   };
 
   return (
@@ -18,21 +20,16 @@ function App({ name, isFetching, error, age }) {
         placeholder="Enter your name"
         onChange={onChange}
       />
-      <button onClick={() => getAge(name)}>Submit</button>
-      <div>Your age is {age}</div>
-      {console.log(age)}
+      <button onClick={() => console.log(props)}>Submit</button>
+      <div>Your age is </div>
     </div>
   );
 }
 const mapStatetoProps = state => {
   return {
-    name: state.name,
-    isFetching: state.isFetching,
-    error: state.error,
-    age: state.age,
+    isFetching: state.state.isFetching,
   };
 };
-
 export default connect(
   mapStatetoProps,
   { getAge },
