@@ -13,15 +13,17 @@ const App = ({ getAge, name, isFetching, error, age }) => {
 
   return (
     <div className="App">
-      <h2>Let me guess your Age from your Name</h2>
+      <h2>Let me GUESS your Age from your Name</h2>
       <input
         type="text"
         name="name"
         placeholder="Enter your name"
         onChange={onChange}
       />
-      <button onClick={() => getAge(username)}>Submit</button>
-      <div>
+      <div className="btn">
+        <button onClick={() => getAge(username)}>Submit</button>
+      </div>
+      <div className="age-guess">
         <p>Your age is {age} </p>
       </div>
     </div>
