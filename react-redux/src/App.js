@@ -4,10 +4,10 @@ import { getAge } from "./actions";
 import "./App.css";
 import { connect } from "react-redux";
 
-function App(props) {
-  const [name, setName] = useState();
+const App = ({ getAge, name, isFetching, error, age }) => {
+  const [username, setUsername] = useState("");
   const onChange = e => {
-    setName(e.target.value);
+    setUsername(e.target.value);
     console.log(name);
   };
 
@@ -20,14 +20,19 @@ function App(props) {
         placeholder="Enter your name"
         onChange={onChange}
       />
-      <button onClick={() => console.log(props)}>Submit</button>
-      <div>Your age is </div>
+      <button onClick={() => getAge(username)}>Submit</button>
+      <div>
+        <p>Your age is {age} </p>
+      </div>
     </div>
   );
-}
+};
 const mapStatetoProps = state => {
   return {
-    isFetching: state.state.isFetching,
+    name: state.name,
+    isFetching: state.isFetching,
+    error: state.error,
+    age: state.age,
   };
 };
 export default connect(

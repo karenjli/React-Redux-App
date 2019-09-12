@@ -1,7 +1,9 @@
 import axios from "axios";
+
 export const FETCHING_AGE_START = "FETCHING_AGE_START";
 export const FETCHING_AGE_SUCCESS = "FETCHING_AGE_SUCCESS";
 export const FETCHING_AGE_FAILURE = "FETCHING_AGE_FAILURE";
+
 export const getAge = name => dispatch => {
   dispatch({ type: FETCHING_AGE_START });
   axios
@@ -12,7 +14,7 @@ export const getAge = name => dispatch => {
     .catch(err => {
       dispatch({
         type: FETCHING_AGE_FAILURE,
-        payload: `${err.response.message} code: ${err.response.code}`,
+        payload: err,
       });
     });
 };

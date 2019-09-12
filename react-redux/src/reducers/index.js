@@ -4,7 +4,7 @@ const initialState = {
   name: "",
   isFetching: false,
   error: "",
-  age: "",
+  age: "___",
 };
 
 export const reducer = (state = initialState, action) => {
@@ -12,7 +12,7 @@ export const reducer = (state = initialState, action) => {
     case FETCHING_AGE_START:
       return { ...state, isFetching: true, error: "" };
     case FETCHING_AGE_SUCCESS:
-      return { ...state, isFetching: false, age: action.payload };
+      return { ...state, isFetching: false, age: action.payload.age };
     default:
       return state;
   }
